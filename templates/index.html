@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-time Face Detection</title>
+</head>
+<body>
+    <h1>Tracking Face Detector</h1>
+    <img id="video_feed" width="640" height="480" alt="Webcam stream will appear here..." />
+    
+    <!-- Use HTTPS to load Socket.IO and ensure compatibility -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <script type="text/javascript">
+        const socket = io();
+
+        const img = document.getElementById('video_feed');
+
+        socket.on('video_frame', function(data) {
+            img.src = 'data:image/jpeg;base64,' + data.frame;
+        });
+    </script>
+</body>
+</html>

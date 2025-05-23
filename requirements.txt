@@ -1,0 +1,16 @@
+flask==2.0.1
+flask-socketio>=5.0.0
+eventlet>=0.30.0
+opencv-python==4.8.0
+torch>=2.0.0
+torchvision>=0.15.0
+numpy==1.24.3
+tensorflow>=2.0.0
+keras>=2.0.0
+gdown==4.7.1
+deepface>=0.0.75
+python-engineio>=4.0.0
+python-socketio>=5.0.0
+retina-face>=0.0.13
+mediapipe==0.10.0
+onnxruntime==1.15.1

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Optimized Face Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #videoFeed {
+            width: 640px;
+            height: 480px;
+            display: block;
+            margin: 0 auto;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+        .info-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .info-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .info-box li {
+            margin: 5px 0;
+        }
+        .status {
+            text-align: center;
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .status.connected {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .status.disconnected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Optimized Face Detection</h1>
+        <img id="videoFeed" src="{{ url_for('video_feed') }}" alt="Video feed">
+        <div id="status" class="status connected">Connected to video stream</div>
+        <div class="info-box">
+            <h3>Optimized Features:</h3>
+            <ul>
+                <li>Background thread for camera capture</li>
+                <li>MediaPipe face detection on every frame</li>
+                <li>DeepFace pre-trained models for age/gender</li>
+                <li>Threaded attribute processing</li>
+                <li>Optimized frame streaming</li>
+                <li>3-second analysis interval per face</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // Handle connection status
+        const videoFeed = document.getElementById('videoFeed');
+        const status = document.getElementById('status');
+        
+        videoFeed.onerror = function() {
+            status.textContent = 'Disconnected from video stream';
+            status.className = 'status disconnected';
+        };
+        
+        videoFeed.onload = function() {
+            status.textContent = 'Connected to video stream';
+            status.className = 'status connected';
+        };
+    </script>
+</body>
+</html> 
