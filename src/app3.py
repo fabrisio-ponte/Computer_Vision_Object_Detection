@@ -43,6 +43,15 @@ logger.info(f"FPS: {fps}")
 logger.info("Loading face detection model...")
 prototxt = "models/deploy.prototxt"
 weights = "models/res10_300x300_ssd_iter_140000.caffemodel"
+
+# Check if model files exist
+if not os.path.exists(prototxt):
+    logger.error(f"Prototxt file not found: {prototxt}")
+    exit()
+if not os.path.exists(weights):
+    logger.error(f"Model weights file not found: {weights}")
+    exit()
+
 face_net = cv2.dnn.readNetFromCaffe(prototxt, weights)
 
 # Configure face detection model
@@ -226,4 +235,4 @@ def handle_connect():
 
 if __name__ == '__main__':
     logger.info("Starting server...")
-    socketio.run(app, host='0.0.0.0', port=5009, debug=True, use_reloader=False) 
+    socketio.run(app, host='0.0.0.0', port=5009, debug=True, use_reloader=False)
